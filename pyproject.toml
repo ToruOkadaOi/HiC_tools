@@ -1,0 +1,23 @@
+[project]
+name = "hic-tools-dashboard"
+version = "1.0.0"
+description = "Interactive dashboard for exploring Hi-C data analysis tools"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "HiC Tools Contributors"}
+]
+
+dependencies = [
+    "streamlit>=1.28.0",
+    "pandas>=2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/ToruOkadaOi/HiC_tools"
+Repository = "https://github.com/ToruOkadaOi/HiC_tools"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

@@ -9,11 +9,29 @@ Tools are added by publication date, newest on top. Unpublished tools are listed
 
 **NEW!** We now offer an interactive Streamlit dashboard to explore Hi-C tools in a more engaging way:
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+### Installation
 
-# Launch the dashboard
+Choose your preferred installation method:
+
+**Using uv (⚡ fastest):**
+```bash
+# Install uv if you haven't already
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install dependencies and run
+uv pip install -r requirements.txt
+streamlit run dashboard.py
+
+# Or use uv to run directly
+uv run streamlit run dashboard.py
+
+# Or use the quick-start script (handles everything)
+./run_dashboard.sh
+```
+
+**Using pip (traditional):**
+```bash
+pip install -r requirements.txt
 streamlit run dashboard.py
 ```
 
