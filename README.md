@@ -3,7 +3,28 @@
 ![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg) 
 [![PR's Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) 
 
-Tools are added by publication date, newest on top. Unpublished tools are listed at the end of each section. See [Hi-C data notes](https://github.com/mdozmorov/HiC_data) and [single-cell Hi-C notes](https://github.com/mdozmorov/scHiC_notes) for more. Please, [contribute and get in touch](CONTRIBUTING.md)! See [MDnotes](https://github.com/mdozmorov/MDnotes) for other data science and genomics-related notes.
+Newest tools on top. See [Hi-C data](https://github.com/mdozmorov/HiC_data), [single-cell Hi-C](https://github.com/mdozmorov/scHiC_notes), and [MDnotes](https://github.com/mdozmorov/MDnotes). [Contribute](CONTRIBUTING.md).
+
+## 🚀 Interactive Dashboard
+
+Explore Hi-C tools with search, filtering, and multiple view modes.
+
+**Quick start:**
+```bash
+./run_dashboard.sh
+```
+
+**Manual setup:**
+```bash
+# Using uv (fastest)
+uv venv && source .venv/bin/activate
+uv pip install -r requirements.txt
+streamlit run dashboard.py
+
+# Or with pip
+pip install -r requirements.txt
+streamlit run dashboard.py
+```
 
 # Table of content
 
