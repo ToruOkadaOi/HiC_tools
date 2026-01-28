@@ -5,8 +5,14 @@ A Streamlit-based interactive visualization for exploring Hi-C data analysis too
 """
 
 import streamlit as st
+import pandas as pd
 import re
 from collections import defaultdict
+
+# Constants
+MAX_DESCRIPTION_LENGTH = 300
+MAX_KANBAN_CATEGORIES = 6
+MAX_TOOLS_PER_COLUMN = 10
 
 # Page configuration
 st.set_page_config(
@@ -90,7 +96,7 @@ def parse_readme():
                 current_category = category_match.group(1).strip()
             
             # Skip table of content and general sections
-            if current_category in ["Table of content", "How to View This README"]:
+            if current_category in ["Table of content", "How to View This README", "Interactive Dashboard - Explore Tools Visually!"]:
                 continue
             
             # Find all tools in this section (lines starting with -)
@@ -109,7 +115,7 @@ def parse_readme():
                     
                     # Clean up description
                     description = re.sub(r'<details>.*', '', description, flags=re.DOTALL)
-                    description = description[:300] + "..." if len(description) > 300 else description
+                    description = description[:MAX_DESCRIPTION_LENGTH] + "..." if len(description) > MAX_DESCRIPTION_LENGTH else description
                     
                     tool_info = {
                         'name': tool_name,
@@ -125,7 +131,7 @@ def parse_readme():
         return tools, dict(categories)
     
     except Exception as e:
-        st.error(f"Error parsing README: {e}")
+        st.error(f"Failed to parse README.md. Please ensure the file exists in the current directory and follows the expected format. Error: {e}")
         return [], {}
 
 def display_tool_card(tool):
@@ -199,19 +205,15 @@ def main():
     
     st.markdown("---")
     
-    # Filter tools based on search and category
-    filtered_tools = tools
-    
-    if search_query:
-        filtered_tools = [
-            t for t in filtered_tools 
-            if search_query.lower() in t['name'].lower() 
-            or search_query.lower() in t['description'].lower()
-            or search_query.lower() in t['category'].lower()
-        ]
-    
-    if selected_category != "All":
-        filtered_tools = [t for t in filtered_tools if t['category'] == selected_category]
+    # Filter tools based on search and category (combined for efficiency)
+    filtered_tools = [
+        t for t in tools
+        if (not search_query or 
+            search_query.lower() in t['name'].lower() or 
+            search_query.lower() in t['description'].lower() or 
+            search_query.lower() in t['category'].lower())
+        and (selected_category == "All" or t['category'] == selected_category)
+    ]
     
     # Display results
     if not filtered_tools:
@@ -228,7 +230,6 @@ def main():
     
     elif view_mode == "Table":
         # Table view
-        import pandas as pd
         df = pd.DataFrame(filtered_tools)
         df = df[['name', 'category', 'description', 'url']]
         
@@ -249,7 +250,7 @@ def main():
         # Kanban board view - group by category
         if selected_category == "All":
             # Show multiple columns for different categories
-            kanban_categories = list(set(t['category'] for t in filtered_tools))[:6]  # Show first 6 categories
+            kanban_categories = list(set(t['category'] for t in filtered_tools))[:MAX_KANBAN_CATEGORIES]
         else:
             kanban_categories = [selected_category]
         
@@ -259,11 +260,16 @@ def main():
             with cols[idx]:
                 st.markdown(f"### {category}")
                 category_tools = [t for t in filtered_tools if t['category'] == category]
-                for tool in category_tools[:10]:  # Show up to 10 tools per column
+                for tool in category_tools[:MAX_TOOLS_PER_COLUMN]:
+                    # Truncate description properly
+                    desc = tool['description'][:100]
+                    if len(tool['description']) > 100:
+                        desc += "..."
+                    
                     st.markdown(f"""
                     <div style="background-color: #e3f2fd; padding: 10px; margin: 5px 0; border-radius: 5px; border-left: 3px solid #2196F3;">
                         <strong>{tool['name']}</strong><br/>
-                        <small>{tool['description'][:100]}...</small><br/>
+                        <small>{desc}</small><br/>
                         <a href="{tool['url']}" target="_blank">🔗</a>
                     </div>
                     """, unsafe_allow_html=True)
@@ -273,8 +279,8 @@ def main():
     st.markdown("""
     <div style="text-align: center; color: #666; padding: 20px;">
         <p>💡 <strong>Tip:</strong> Use the sidebar to filter tools by category or search for specific functionality</p>
-        <p>📚 Full documentation available in <a href="README.md">README.md</a></p>
-        <p>🌟 Want to contribute? Check out <a href="CONTRIBUTING.md">CONTRIBUTING.md</a></p>
+        <p>📚 Full documentation available in <a href="https://github.com/ToruOkadaOi/HiC_tools/blob/main/README.md" target="_blank">README.md</a></p>
+        <p>🌟 Want to contribute? Check out <a href="https://github.com/ToruOkadaOi/HiC_tools/blob/main/CONTRIBUTING.md" target="_blank">CONTRIBUTING.md</a></p>
     </div>
     """, unsafe_allow_html=True)
 
