@@ -5,6 +5,26 @@
 
 Tools are added by publication date, newest on top. Unpublished tools are listed at the end of each section. See [Hi-C data notes](https://github.com/mdozmorov/HiC_data) and [single-cell Hi-C notes](https://github.com/mdozmorov/scHiC_notes) for more. Please, [contribute and get in touch](CONTRIBUTING.md)! See [MDnotes](https://github.com/mdozmorov/MDnotes) for other data science and genomics-related notes.
 
+## 🚀 Interactive Dashboard - Explore Tools Visually!
+
+**NEW!** We now offer an interactive Streamlit dashboard to explore Hi-C tools in a more engaging way:
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Launch the dashboard
+streamlit run dashboard.py
+```
+
+The dashboard provides:
+- 🔍 **Smart Search** - Find tools by name, category, or keywords
+- 📊 **Multiple Views** - Cards, Table, or Kanban Board layouts
+- 🎯 **Filter by Category** - Easily browse tools by their function
+- 📈 **Visual Statistics** - See the landscape of Hi-C tools at a glance
+
+Perfect for quickly discovering the right tool for your analysis needs!
+
 ## How to View This README
 
 This README is best viewed with proper markdown formatting:
