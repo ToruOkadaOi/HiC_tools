@@ -152,7 +152,7 @@ def main():
     # Display the 3C technologies image
     try:
         st.image("img/3C_technologies.png", caption="3C Technologies Overview", use_container_width=True)
-    except:
+    except (FileNotFoundError, IOError):
         pass  # Skip if image not found
     
     st.markdown("---")
