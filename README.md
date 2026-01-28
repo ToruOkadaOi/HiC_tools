@@ -5,6 +5,18 @@
 
 Tools are added by publication date, newest on top. Unpublished tools are listed at the end of each section. See [Hi-C data notes](https://github.com/mdozmorov/HiC_data) and [single-cell Hi-C notes](https://github.com/mdozmorov/scHiC_notes) for more. Please, [contribute and get in touch](CONTRIBUTING.md)! See [MDnotes](https://github.com/mdozmorov/MDnotes) for other data science and genomics-related notes.
 
+## How to View This README
+
+This README is best viewed with proper markdown formatting:
+
+- **On GitHub**: Simply view this file on the [GitHub repository page](https://github.com/ToruOkadaOi/HiC_tools) for automatic rendering with full formatting, badges, and clickable links.
+- **Locally**: Use a markdown viewer such as:
+  - [Markdown Preview Plus](https://chrome.google.com/webstore/detail/markdown-preview-plus/) (Chrome extension)
+  - [Markdown Viewer](https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer-webext/) (Firefox extension)  
+  - [VSCode](https://code.visualstudio.com/) with built-in markdown preview (`Ctrl+Shift+V` or `Cmd+Shift+V`)
+  - [Typora](https://typora.io/), [MacDown](https://macdown.uranusjr.com/), or [Obsidian](https://obsidian.md/) as standalone editors
+  - Command line tools like `grip` (`pip install grip`, then `grip README.md`) to view in your browser
+
 # Table of content
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
