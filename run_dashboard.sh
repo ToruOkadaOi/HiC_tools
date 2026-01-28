@@ -9,18 +9,27 @@ echo ""
 
 # Check if uv is installed
 if ! command -v uv &> /dev/null; then
-    echo "⚠️  uv is not installed. Installing uv..."
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    echo "✅ uv installed successfully!"
+    echo "⚠️  uv is not installed."
     echo ""
-    echo "Please restart your shell or run: source ~/.bashrc"
-    echo "Then run this script again."
-    exit 0
+    echo "Please install uv first using one of these methods:"
+    echo "  - pip install uv"
+    echo "  - curl -LsSf https://astral.sh/uv/install.sh | sh"
+    echo "  - brew install uv  (macOS)"
+    echo ""
+    exit 1
 fi
 
 echo "✅ uv found: $(uv --version)"
 echo ""
+
+# Create virtual environment if it doesn't exist
+if [ ! -d ".venv" ]; then
+    echo "📦 Creating virtual environment..."
+    uv venv
+fi
+
 echo "📦 Installing dependencies..."
+source .venv/bin/activate
 uv pip install -r requirements.txt
 
 echo ""

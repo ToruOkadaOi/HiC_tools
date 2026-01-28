@@ -15,15 +15,16 @@ Choose your preferred installation method:
 
 **Using uv (⚡ fastest):**
 ```bash
-# Install uv if you haven't already
+# Install uv if you haven't already (or use: pip install uv)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Install dependencies and run
+# Create a virtual environment and install dependencies
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 uv pip install -r requirements.txt
-streamlit run dashboard.py
 
-# Or use uv to run directly
-uv run streamlit run dashboard.py
+# Run the dashboard
+streamlit run dashboard.py
 
 # Or use the quick-start script (handles everything)
 ./run_dashboard.sh
