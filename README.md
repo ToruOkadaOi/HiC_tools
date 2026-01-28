@@ -3,58 +3,28 @@
 ![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg) 
 [![PR's Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) 
 
-Tools are added by publication date, newest on top. Unpublished tools are listed at the end of each section. See [Hi-C data notes](https://github.com/mdozmorov/HiC_data) and [single-cell Hi-C notes](https://github.com/mdozmorov/scHiC_notes) for more. Please, [contribute and get in touch](CONTRIBUTING.md)! See [MDnotes](https://github.com/mdozmorov/MDnotes) for other data science and genomics-related notes.
+Newest tools on top. See [Hi-C data](https://github.com/mdozmorov/HiC_data), [single-cell Hi-C](https://github.com/mdozmorov/scHiC_notes), and [MDnotes](https://github.com/mdozmorov/MDnotes). [Contribute](CONTRIBUTING.md).
 
-## 🚀 Interactive Dashboard - Explore Tools Visually!
+## 🚀 Interactive Dashboard
 
-**NEW!** We now offer an interactive Streamlit dashboard to explore Hi-C tools in a more engaging way:
+Explore Hi-C tools with search, filtering, and multiple view modes.
 
-### Installation
-
-Choose your preferred installation method:
-
-**Using uv (⚡ fastest):**
+**Quick start:**
 ```bash
-# Install uv if you haven't already (or use: pip install uv)
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Create a virtual environment and install dependencies
-uv venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-uv pip install -r requirements.txt
-
-# Run the dashboard
-streamlit run dashboard.py
-
-# Or use the quick-start script (handles everything)
 ./run_dashboard.sh
 ```
 
-**Using pip (traditional):**
+**Manual setup:**
 ```bash
+# Using uv (fastest)
+uv venv && source .venv/bin/activate
+uv pip install -r requirements.txt
+streamlit run dashboard.py
+
+# Or with pip
 pip install -r requirements.txt
 streamlit run dashboard.py
 ```
-
-The dashboard provides:
-- 🔍 **Smart Search** - Find tools by name, category, or keywords
-- 📊 **Multiple Views** - Cards, Table, or Kanban Board layouts
-- 🎯 **Filter by Category** - Easily browse tools by their function
-- 📈 **Visual Statistics** - See the landscape of Hi-C tools at a glance
-
-Perfect for quickly discovering the right tool for your analysis needs!
-
-## How to View This README
-
-This README is best viewed with proper markdown formatting:
-
-- **On GitHub**: Simply view this file on the [GitHub repository page](https://github.com/ToruOkadaOi/HiC_tools) for automatic rendering with full formatting, badges, and clickable links.
-- **Locally**: Use a markdown viewer such as:
-  - [Markdown Preview Plus](https://chrome.google.com/webstore/detail/markdown-preview-plus/) (Chrome extension)
-  - [Markdown Viewer](https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer-webext/) (Firefox extension)  
-  - [VSCode](https://code.visualstudio.com/) with built-in markdown preview (`Ctrl+Shift+V` or `Cmd+Shift+V`)
-  - [Typora](https://typora.io/), [MacDown](https://macdown.uranusjr.com/), or [Obsidian](https://obsidian.md/) as standalone editors
-  - Command line tools like `grip` (`pip install grip`, then `grip README.md`) to view in your browser
 
 # Table of content
 

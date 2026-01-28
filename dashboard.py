@@ -147,8 +147,15 @@ def display_tool_card(tool):
 
 def main():
     # Header
-    st.markdown("# 🧬 Hi-C Tools Explorer Dashboard")
-    st.markdown("### An interactive way to discover and explore Hi-C data analysis tools")
+    st.markdown("# 🧬 Hi-C Tools Explorer")
+    
+    # Display the 3C technologies image
+    try:
+        st.image("img/3C_technologies.png", caption="3C Technologies Overview", use_container_width=True)
+    except:
+        pass  # Skip if image not found
+    
+    st.markdown("---")
     
     # Load data
     tools, categories = parse_readme()
